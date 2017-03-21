@@ -9,7 +9,7 @@ return a + b.price
 //question two
 
 var priceRange = items.filter(function(val){
-	if (val.price > 14.00 && val.price < 18.00){ //return item.price > 14 && item.price < 18
+	if (val.price > 14.00 && val.price < 18.00){
 		return val
 	}
 }).map(function(val){
@@ -20,15 +20,14 @@ var priceRange = items.filter(function(val){
  //question three
 
  var gbp = items.filter(function(val){
- 	if (val.currency_code === "GBP"){  // return val.currency_code === "GBP"
- 		return val
- 	}
- }).map(function(val){
- 	return { // return as object
-     title: val.title,
-     price: val.price.toFixed(2)
-   }
+ 	return val.currency_code === "GBP"
  })
+ var answer3html=""
+ gbp.forEach(function(val){
+ 	answer3html += `${val.title} costs &pound;${val.price}\n`
+ })
+
+
 
 
 //question four
@@ -37,7 +36,7 @@ var priceRange = items.filter(function(val){
 
 var wood = items.filter(function(val) {
 
-	if(val.materials.includes('wood')) {//return val.materials.indexOf('wood') !== -1
+	if(val.materials.includes('wood')) {
 
 		return val
 	}
@@ -53,25 +52,16 @@ var wood = items.filter(function(val) {
 
 // question five
 
-
+var answer5html = ""
 var numberItems = items.filter(function(val){
-	//if(val.materials.length >=8){  return val
-		return item.materials.length >= 8
-		
-	
-}).forEach(function(item){
-	answer5html += `\n${item.title}\n\n`
-	item.materials.forEach(function(material){
-		abswer5html += '${material}\n'
+	return val.materials.length >=8
+}).forEach(function(val){
+	answer5html +=`${val.title}\n\n`
+	val.materials.forEach(function(material){
+		answer5html += `${material}\n`
 	})
-
-//.map(function(val){   return {
-	//	title: val.title,
-	//	materials: val.materials
-	//}
 })
 
-answer5.innerHTML = answer5html
 
 //question six
 
@@ -97,26 +87,20 @@ var whoMade = items.filter(function(val){
 // console.log(gbp[0].title, gbp[0].price)
 
 var answer1 = document.querySelector("#answer1")
-answer1.innerHTML = `The average price is $${sum}`
+answer1.innerHTML = `The average is ${sum}`
 
 
 var answer2 = document.querySelector("#answer2")
 answer2.innerHTML = `${priceRange}`
 
 var answer3 = document.querySelector("#answer3")
-answer3.innerHTML = `${gbp}`
+answer3.innerHTML = answer3html
 
 var answer4 = document.querySelector("#answer4")
 answer4.innerHTML = `${wood}`
 
 var answer5 = document.querySelector("#answer5")
-answer5.innerHTML = `${numberItems}`
+answer5.innerHTML = answer5html
 
 var answer6 = document.querySelector("#answer6")
 answer6.innerHTML = `${whoMade}`
-
-
-
-
-
-
